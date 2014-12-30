@@ -1,1 +1,63 @@
-/Users/ejaycanaria/.vimrc
+set nocompatible                " choose no compatibility with legacy vi 
+syntax enable
+set number
+set encoding=utf-8
+set showcmd                     " display incomplete commands
+filetype off                    " required
+filetype plugin indent on       " load file type plugins + indentation
+" Disable auto comment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+"" Whitespace
+set nowrap                      " don't wrap lines
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set backspace=indent,eol,start  " backspace through everything in insert mode
+
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+
+"" Enter key to add new line without entering insert mode
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>
+
+" ========================= VUNDLE Stuffs ========================= "
+
+" Keep Plugin commands between vundle#begin/end.
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+
+call vundle#end()           
+filetype plugin indent on   
+
+" ====================== END VUNDLE ============================== "
+
+"Map Pane Switcher
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+"Copy to system clipboard
+set clipboard+=unnamed
+
+"Always show Vim Airline
+set laststatus=2
+
+"" NERD Tree Config
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter * lcd %:p:h
