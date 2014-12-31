@@ -1,4 +1,4 @@
-set nocompatible                " choose no compatibility with legacy vi 
+set nocompatible                " choose no compatibility with legacy vi
 set number
 set encoding=utf-8
 set showcmd                     " display incomplete commands
@@ -23,7 +23,9 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-"" Enter key to add new line without entering insert mode
+"" Mappings
+
+" Enter key to add new line without entering insert mode
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>
 
@@ -39,13 +41,16 @@ Plugin 'tpope/vim-rails'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'terryma/vim-multiple-cursors'
 
-call vundle#end()           
-filetype plugin indent on   
+call vundle#end()
+filetype plugin indent on
 
 " ====================== END VUNDLE ============================== "
 
@@ -62,10 +67,12 @@ set clipboard+=unnamed
 set laststatus=2
 
 "" NERD Tree Config
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd BufEnter * lcd %:p:h
 
+
+"" Railscasts Theme Settings
 set background=dark
 colorscheme base16-railscasts
 
@@ -83,3 +90,4 @@ highlight Visual       ctermbg=3   ctermfg=0
 highlight Pmenu        ctermbg=240 ctermfg=12
 highlight PmenuSel     ctermbg=3   ctermfg=1
 highlight SpellBad     ctermbg=0   ctermfg=1
+"" End Railscasts Theme Settings
