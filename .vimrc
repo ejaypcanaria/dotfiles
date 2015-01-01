@@ -16,12 +16,14 @@ set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
+autocmd BufWritePre <buffer> :%s/\s\+$//e   " remove trailing whitespaces
 
 "" Searching
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
+set omnifunc=csscomplete#CompleteCSS
 
 "" Mappings
 
@@ -48,6 +50,11 @@ Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rake'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kwaledesign/scss-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
