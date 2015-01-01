@@ -1,1 +1,1 @@
-/Users/ejaycanaria/.zprezto/runcoms/zshrc
+/Users/ejaycanaria/open_source/dotfiles/zsh/.zshrc
