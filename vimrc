@@ -2,17 +2,17 @@ set nocompatible                " choose no compatibility with legacy vi
 set number
 set encoding=utf-8
 set showcmd                     " display incomplete commands
+set noswapfile
 
 filetype off                    " required
 filetype plugin indent on       " load file type plugins + indentation
 
-syntax enable
 
 " Disable auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "" Whitespace
-set nowrap                      " don't wrap lines
+"set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
@@ -26,6 +26,9 @@ set smartcase                   " ... unless they contain at least one capital l
 set omnifunc=csscomplete#CompleteCSS
 
 "" Mappings
+
+nnoremap <silent> <Leader>= :exe "vertical resize +25"<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize -25"<CR>
 
 " Enter key to add new line without entering insert mode
 nmap <S-Enter> O<Esc>j
@@ -55,9 +58,14 @@ Plugin 'tpope/vim-rake'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kwaledesign/scss-snippets'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'nono/vim-handlebars'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
-filetype plugin indent on
 
 " ====================== END VUNDLE ============================== "
 
@@ -78,6 +86,10 @@ map <C-t> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd BufEnter * lcd %:p:h
 
+filetype off
+filetype on
+
+syntax enable
 
 "" Railscasts Theme Settings
 set background=dark
