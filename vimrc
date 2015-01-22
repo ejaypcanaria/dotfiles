@@ -27,8 +27,8 @@ set omnifunc=csscomplete#CompleteCSS
 
 "" Mappings
 
-nnoremap <silent> <Leader>= :exe "vertical resize +25"<CR>
-nnoremap <silent> <Leader>- :exe "vertical resize -25"<CR>
+nnoremap <silent> <Leader>= :exe "vertical resize +10"<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize -10"<CR>
 
 " Enter key to add new line without entering insert mode
 nmap <S-Enter> O<Esc>j
@@ -64,7 +64,9 @@ Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
-
+Plugin 'rstacruz/sparkup'
+Plugin 'dsawardekar/ember.vim'
+Plugin 'dsawardekar/portkey'
 call vundle#end()
 
 " ====================== END VUNDLE ============================== "
