@@ -3,6 +3,7 @@ set number
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 set noswapfile
+set cursorline
 
 filetype off                    " required
 filetype plugin indent on       " load file type plugins + indentation
@@ -15,8 +16,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "set nowrap                      " don't wrap lines
 set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
-set backspace=indent,eol,start  " backspace through everything in insert mode
+set backspace=indent,start,eol  " backspace through everything in insert mode
 autocmd BufWritePre <buffer> :%s/\s\+$//e   " remove trailing whitespaces
+
+set colorcolumn=120
+highlight ColorColumn ctermbg=DarkGray
 
 "" Searching
 set hlsearch                    " highlight matches
@@ -67,6 +71,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'rstacruz/sparkup'
 Plugin 'dsawardekar/ember.vim'
 Plugin 'dsawardekar/portkey'
+Plugin 'skalnik/vim-vroom'
+Plugin 'isRuslan/vim-es6'
 call vundle#end()
 
 " ====================== END VUNDLE ============================== "

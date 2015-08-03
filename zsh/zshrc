@@ -6,12 +6,13 @@
 #
 
 export EDITOR="vim"
+export VISUAL="vim"
 
 # Add tmuxinator completion
 source ~/.bin/tmuxinator.zsh
 
 # Add RVM to Path
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -25,3 +26,11 @@ unalias rm
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# TG Aliases
+alias tge="mux tg"
+alias tgs="foreman start -p 3000"
+
+alias ige="mux ig"
+alias igs="foreman run rails s -p 5000"
