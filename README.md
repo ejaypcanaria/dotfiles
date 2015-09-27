@@ -2,6 +2,7 @@ NOTE: This setup is only tested on Mac.
 
 ### Requirements
 Make sure the following are already installed on your machine.
+
 1. Git
 2. iTerm2
 3. CMake
