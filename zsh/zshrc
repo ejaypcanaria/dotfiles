@@ -22,7 +22,8 @@ fi
 
 # Customize to your needs...
 unalias rm
-
+# For Ctrl-E etc to work
+bindkey -e
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
