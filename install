@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "WARNING: This installation will replace your current .zshrc and .vimrc. Do you want to proceed?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) break;;
+        No ) echo "Installation aborted"; exit;;
+    esac
+done
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+echo 'Installing Vundle'
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo 'Vundle installed'
+
+echo 'Configuring zsh'
+rm ~/.zshrc
+ln -s "${DIR}/zsh/zshrc" ~/.zshrc
+
+echo 'Installing zpresto'
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+ln -s "${DIR}/prezto/themes/prompt_sorin_custom_setup" ~/.zprezto/modules/prompt/functions/prompt_sorin_custom_setup
+ln -s "${DIR}/prezto/zpreztorc" ~/.zpreztorc
+echo 'zpresto installed'
+
+echo 'Symlinking vimrc'
+rm ~/.vimrc
+ln -s "${DIR}/vimrc" ~/.vimrc
+echo 'vimrc symlinked'
+
+echo 'Configuring tmux'
+ln -s "${DIR}/tmux/tmux.conf" ~/.tmux.conf
+ln -s "${DIR}/tmux/tmuxinator.zsh" ~/.bin/tmuxinator.zsh
+echo 'tmux configured'
