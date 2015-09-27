@@ -8,8 +8,9 @@
 export EDITOR="vim"
 export VISUAL="vim"
 
+# This stops working for some reason. Commenting out for now.
 # Add tmuxinator completion
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 
 # Add RVM to Path
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
