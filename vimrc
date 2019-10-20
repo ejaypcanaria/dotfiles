@@ -5,9 +5,10 @@ set showcmd                     " display incomplete commands
 set noswapfile
 set cursorline
 
+let g:ctrlp_custom_ignore = 'node_modules\|tmp\|DS_Store\|git'
+
 filetype off                    " required
 filetype plugin indent on       " load file type plugins + indentation
-
 
 " Disable auto comment
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -51,7 +52,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
@@ -73,6 +73,10 @@ Plugin 'dsawardekar/ember.vim'
 Plugin 'dsawardekar/portkey'
 Plugin 'skalnik/vim-vroom'
 Plugin 'isRuslan/vim-es6'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 
 " ====================== END VUNDLE ============================== "
@@ -84,20 +88,47 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 "Copy to system clipboard
-set clipboard+=unnamed
+"if $TMUX == ''
+set clipboard=unnamed
+"endif
+
+vnoremap <Leader>ps :w !tmux-pipe-to-next-pane<CR>
+
+set rtp+=/usr/local/opt/fzf
 
 "Always show Vim Airline
 set laststatus=2
 
 "" NERD Tree Config
 map <C-t> :NERDTreeToggle<CR>
+map <C-T> :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd BufEnter * lcd %:p:h
+
+" FZF Config
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'GFiles' s:find_git_root()
+
+map <C-p> :ProjectFiles<CR>
+let g:fzf_layout = { 'down': '~20%' }
 
 filetype off
 filetype on
 
 syntax enable
+
+" CtrlSF Mappings
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 "" Railscasts Theme Settings
 set background=dark
