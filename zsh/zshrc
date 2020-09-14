@@ -32,15 +32,14 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+export PATH="$PATH:/Users/ecanaria/scripts"
+
 # TG Aliases
 alias tge="mux tg-core"
 alias tgs="foreman run rails s -p 3000 -b 0.0.0.0"
-
-alias ige="mux ig"
-alias igs="foreman run rails s -p 5000"
-
 alias h-tgconsole="heroku run rails c -rheroku"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion"  ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi

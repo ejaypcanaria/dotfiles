@@ -34,6 +34,7 @@ set omnifunc=csscomplete#CompleteCSS
 
 nnoremap <silent> <Leader>= :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize -10"<CR>
+nnoremap <silent> <Leader>fr o# frozen_string_literal: true<ESC>
 
 " Enter key to add new line without entering insert mode
 nmap <S-Enter> O<Esc>j
@@ -129,6 +130,14 @@ nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+" FZF Config
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'GFiles' s:find_git_root()
+map <C-p> :ProjectFiles<CR>
+let g:fzf_layout = { 'down': '~20%' }
 
 "" Railscasts Theme Settings
 set background=dark
