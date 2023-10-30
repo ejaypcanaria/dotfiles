@@ -67,6 +67,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'rstacruz/sparkup'
@@ -78,6 +79,9 @@ Plugin 'jremmen/vim-ripgrep'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 call vundle#end()
 
 " ====================== END VUNDLE ============================== "
