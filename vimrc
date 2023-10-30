@@ -76,8 +76,7 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'isRuslan/vim-es6'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plugin 'junegunn/fzf.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
@@ -98,7 +97,6 @@ set clipboard=unnamed
 
 vnoremap <Leader>ps :w !tmux-pipe-to-next-pane<CR>
 
-set rtp+=/usr/local/opt/fzf
 
 "Always show Vim Airline
 set laststatus=2
@@ -108,16 +106,6 @@ map <C-t> :NERDTreeToggle<CR>
 map <C-T> :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd BufEnter * lcd %:p:h
-
-" FZF Config
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-
-command! ProjectFiles execute 'GFiles' s:find_git_root()
-
-map <C-p> :ProjectFiles<CR>
-let g:fzf_layout = { 'down': '~20%' }
 
 filetype off
 filetype on
@@ -134,13 +122,9 @@ nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-" FZF Config
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'GFiles' s:find_git_root()
-map <C-p> :ProjectFiles<CR>
-let g:fzf_layout = { 'down': '~20%' }
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 
 "" Railscasts Theme Settings
 set background=dark
