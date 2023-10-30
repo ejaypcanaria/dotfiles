@@ -42,5 +42,3 @@ alias h-tgconsole="heroku run rails c -rheroku"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion"  ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
-export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
