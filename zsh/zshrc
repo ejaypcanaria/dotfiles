@@ -7,6 +7,7 @@
 
 export EDITOR="vim"
 export VISUAL="vim"
+export GPG_TTY=$(tty)
 
 # This stops working for some reason. Commenting out for now.
 # Add tmuxinator completion
